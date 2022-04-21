@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-  <HeaderComp/>
+  <HeaderComp @selectGenre="filterGenre" />
 
     <main>
       <div class="container">
-        <AlbumsComp/>
+        <AlbumsComp :genre="selectedGenre"/>
       </div>
     </main>
   </div>
@@ -19,7 +19,17 @@ export default {
   components: {
     HeaderComp,
     AlbumsComp
-  }
+  },
+  data() {
+    return {
+      selectedGenre: 'all'
+    }
+  },
+  methods: {
+    filterGenre(genre) {
+      this.selectedGenre = genre;
+    }
+  },
 }
 </script>
 
